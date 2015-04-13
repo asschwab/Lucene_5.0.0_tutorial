@@ -94,9 +94,12 @@ public class LuceneClient {
 			// Add the last big lucene version birthday which we don't want to store but to be indexed nevertheless to be filterable
 			doc.add(new LongField("lastVersionBirthday", new GregorianCalendar(2015,1,20).getTimeInMillis(), Field.Store.NO));
 
+			// !! Please due to licensing use your copy of release notes and add it to the project root folder:
+			// http://lucene.apache.org/core/5_0_0/changes/Changes.html
+			
 			// The version info content should be searchable also be tokens, this is why we use a TextField; as we use a reader, the content is not stored!
 			doc.add(new TextField("versioninfo", new BufferedReader(
-					new InputStreamReader(new FileInputStream(new File("changelog_rel_5.0.0.txt")), StandardCharsets.UTF_8))));
+					new InputStreamReader(new FileInputStream(new File("USE_YOUR_COPY_OF_RELEASE_NOTES_.txt")), StandardCharsets.UTF_8))));
 
 			if (writer.getConfig().getOpenMode() == OpenMode.CREATE) {
 				// New index
